@@ -1,1 +1,6 @@
-runs-on: self-hosted
+name: learn-github-actions
+jobs:
+  check-bats-version:
+    runs-on: self-hosted
+    steps:
+      - run: echo "2222"
