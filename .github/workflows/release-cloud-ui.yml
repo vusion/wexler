@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: cloud-ui.vusion@${{ env.VERSION }}
+          name: cloud-ui.vusion@0.18.2
       - run: curl 'http://10.219.196.129:1454/github-workflows/release-cloud-ui'
