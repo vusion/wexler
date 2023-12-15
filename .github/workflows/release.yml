@@ -4,5 +4,7 @@ jobs:
   check-bats-version:
     runs-on: self-hosted
     steps:
+      - run: rm -rf jimmy
       - run: git clone https://Baymax:ze4vCDGm7LkvBMfn2CsV@g.hz.netease.com/lcap/nl2nasl.git
       - run: git clone https://Baymax:ze4vCDGm7LkvBMfn2CsV@g.hz.netease.com/lixiaoshuang/jimmy.git
+      - run: git clone https://Baymax:ze4vCDGm7LkvBMfn2CsV@g.hz.netease.com/lixiaoshuang/jimmy.git lxs-cool
