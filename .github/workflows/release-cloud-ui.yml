@@ -7,7 +7,4 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: cloud-ui.vusion@${{ env.VERSION }}
-      - run: curl 'http://10.219.196.129:1454/github-workflows/release-cloud-ui' \
-        -H 'content-type: application/json' \
-        --data-raw '{"a":1}' \
-        --compressed
+      - run: curl 'http://10.219.196.129:1454/github-workflows/release-cloud-ui'
