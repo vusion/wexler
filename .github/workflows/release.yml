@@ -4,4 +4,4 @@ jobs:
   check-bats-version:
     runs-on: self-hosted
     steps:
-      - run: git clone https://github.com/vusion/cloud-ui.git
+      - run: git clone https://g.hz.netease.com/lixiaoshuang/jimmy.git
