@@ -4,7 +4,7 @@ jobs:
   release-cloud-ui:
     runs-on: self-hosted
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: cloud-ui.vusion@merge-lxs
       - run: echo "JSON=$(curl 'http://10.219.196.129:1454/github-workflows')" >> $GITHUB_ENV
