@@ -24,6 +24,8 @@ jobs:
             cd lcap-assets
             git fetch origin
             git reset --hard origin/master
+            git checkout master
+            git reset --hard origin/master
             cd ../
           else
             git clone "${{ fromJson(env.JSON).result.lcapAssets }}"
