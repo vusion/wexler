@@ -12,7 +12,10 @@ jobs:
         with:
           node-version: 20.10.0
 
-      - run: echo "PACKAGE_JSON=$(cat ./package.json)" >> $GITHUB_ENV
+      - run: |
+        echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
+        cat ./package.json >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
       - uses: actions/download-artifact@v4
         with:
           name: "cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}"
