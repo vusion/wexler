@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: cloud-ui.vusion@${{ env.GITHUB_REF_NAME }}
+          name: 'cloud-ui.vusion@${{ env.GITHUB_REF_NAME }}'
       - run: echo "JSON=$(curl 'http://10.219.196.129:1454/github-workflows')" >> $GITHUB_ENV
       - run: git config --global user.email "${{ fromJson(env.JSON).result.email }}"
       - run: git config --global user.name "${{ fromJson(env.JSON).result.name }}"
