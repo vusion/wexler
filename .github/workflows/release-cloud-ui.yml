@@ -19,9 +19,13 @@ jobs:
             cd jimmy
             git fetch origin
             git reset --hard origin/master
+            npm install
             cd ../
           else
             git clone "${{ fromJson(env.JSON).result.jimmy }}"
+            cd jimmy
+            npm install
+            cd ../
           fi
       - run:  |
           if [[ -f lcap-assets/package.json ]]; then
