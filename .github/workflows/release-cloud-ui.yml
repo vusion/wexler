@@ -5,6 +5,8 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
+      - run: ls -la
+      - run: cat package.json
       - uses: actions/setup-node@v4
         with:
           node-version: 20.10.0
