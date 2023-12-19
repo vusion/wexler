@@ -4,22 +4,29 @@ jobs:
   release-cloud-ui:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout from cloud-ui
+        uses: actions/checkout@v4
         with:
           clean: false
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node 20.10.0
+        uses: actions/setup-node@v4
         with:
           node-version: 20.10.0
 
-      - run: |
+      - name: Get version from package.json
+        run: |
           echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
           cat ./package.json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
-      - uses: actions/download-artifact@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
           name: "cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}"
 
-      - uses: vusion/wexler@v1.0.2
+      - name: Clone from gitlab
+        uses: vusion/wexler@v1.0.2
 
-      - run: node ./jimmy/app/pipelines/release-cloud-ui.js
+      - name: Release to lcap-assets
+        run: node ./jimmy/app/pipelines/release-cloud-ui.js
