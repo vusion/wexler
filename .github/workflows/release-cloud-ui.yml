@@ -20,6 +20,6 @@ jobs:
         with:
           name: 'cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}'
 
-      - uses: actions/wexler@v1
+      - uses: actions/cornerstone@v1
 
       - run: node ./jimmy/app/pipelines/release-cloud-ui.js
