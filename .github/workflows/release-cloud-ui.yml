@@ -24,6 +24,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: "cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}"
+          path: temp
 
       - name: Clone from gitlab
         uses: vusion/wexler@v1.0.2
