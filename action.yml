@@ -1,6 +1,6 @@
 name: 'Cornerstone'
 description: 'Prepare for releasing'
-runs:2
+runs:
   using: 'composite'
   steps:
     - run: echo "JSON=$(curl 'http://10.219.196.129:1454/github-workflows')" >> $GITHUB_ENV
