@@ -14,13 +14,13 @@ jobs:
         with:
           node-version: 20.10.0
 
-      - name: Get version from package.json
+      - name: Read from package.json
         run: |
           echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
           cat ./package.json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: Download artifact
+      - name: Download artifact with version
         uses: actions/download-artifact@v4
         with:
           name: "cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}"
