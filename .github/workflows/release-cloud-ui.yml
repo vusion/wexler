@@ -18,8 +18,33 @@ jobs:
           echo 'EOF' >> $GITHUB_ENV
       - uses: actions/download-artifact@v4
         with:
-          name: 'cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}'
+          name: "cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}"
 
-      - uses: ./.github/actions/cronerstone
-
+      - run: echo "JSON=$(curl 'http://10.219.196.129:1454/github-workflows')" >> $GITHUB_ENV
+      - run: git config --global user.email "${{ fromJson(env.JSON).result.email }}"
+      - run: git config --global user.name "${{ fromJson(env.JSON).result.name }}"
+      - run: |
+          if [[ -f jimmy/package.json ]]; then
+            cd jimmy
+            git fetch origin
+            git reset --hard origin/master
+            npm install
+            cd ../
+          else
+            git clone "${{ fromJson(env.JSON).result.jimmy }}"
+            cd jimmy
+            npm install
+            cd ../
+          fi
+      - run:  |
+          if [[ -f lcap-assets/package.json ]]; then
+            cd lcap-assets
+            git fetch origin
+            git reset --hard origin/master
+            git checkout master
+            git reset --hard origin/master
+            cd ../
+          else
+            git clone "${{ fromJson(env.JSON).result.lcapAssets }}"
+          fi
       - run: node ./jimmy/app/pipelines/release-cloud-ui.js
