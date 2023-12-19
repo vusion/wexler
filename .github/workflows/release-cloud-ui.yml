@@ -12,6 +12,6 @@ jobs:
         with:
           node-version: 20.10.0
 
-      - uses: actions/wexler@v1
+      - uses: vusion/wexler@v1
 
       - run: node ./jimmy/app/pipelines/release-cloud-ui.js
