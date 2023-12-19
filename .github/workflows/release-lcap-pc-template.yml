@@ -1,0 +1,33 @@
+name: release
+on: [push, workflow_call]
+jobs:
+  release-cloud-ui:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout from lcap-pc-template
+        uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Setup Node 20.10.0
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+
+      - name: Read from package.json
+        run: |
+          echo 'PACKAGE_JSON<<EOF' >> $GITHUB_ENV
+          cat ./package.json >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+
+      - name: Download artifact with version
+        uses: actions/download-artifact@v4
+        with:
+          name: "lcap-pc-template@v${{ fromJson(env.PACKAGE_JSON).version }}"
+          path: temp
+
+      - name: Clone from gitlab
+        uses: vusion/wexler@v1.0.2
+
+      - name: Release to lcap-assets
+        run: node ./jimmy/app/pipelines/release-lcap-pc-template.js
