@@ -20,6 +20,6 @@ jobs:
         with:
           name: 'cloud-ui.vusion@${{ fromJson(env.PACKAGE_JSON).version }}'
 
-      - uses: actions/cornerstone@v1
+      - uses: ./.github/actions/cronerstone
 
       - run: node ./jimmy/app/pipelines/release-cloud-ui.js
