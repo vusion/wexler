@@ -34,5 +34,4 @@ jobs:
 
       - name: Alert from Github
         if: ${{ failure() }}
-        uses: actions/github-script@v6
         run: node ./jimmy/app/pipelines/alert-github.js
