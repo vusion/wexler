@@ -31,3 +31,7 @@ jobs:
 
       - name: Release to lcap-assets
         run: node ./jimmy/app/pipelines/release-vant.js
+
+      - name: Alert from Github
+        if: ${{ failure() }}
+        run: node ./jimmy/app/pipelines/alert-github.js
