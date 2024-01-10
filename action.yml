@@ -33,6 +33,6 @@ runs:
           git reset --hard origin/master
           cd ../
         else
-          git clone "${{ fromJson(env.JSON).result.lcapAssets }}"
+          git clone --depth 1 "${{ fromJson(env.JSON).result.lcapAssets }}"
         fi
       shell: bash
