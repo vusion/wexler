@@ -26,13 +26,13 @@ runs:
     - run:  |
         if [[ -f lcap-assets/package.json ]]; then
           cd lcap-assets
-          git fetch -p
-          git fetch --depth 1 origin master
+          git fetch origin master
           git reset --hard origin/master
           git checkout master
           git reset --hard origin/master
+          git branch --merged master --no-color | grep -v "master\|stable\|main" | xargs git branch -d
           cd ../
         else
-          git clone --depth 1 "${{ fromJson(env.JSON).result.lcapAssets }}"
+          git clone --depth 1 --single-branch "${{ fromJson(env.JSON).result.lcapAssets }}"
         fi
       shell: bash
