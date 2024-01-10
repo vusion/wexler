@@ -27,7 +27,7 @@ jobs:
           path: temp
 
       - name: Clone from gitlab
-        uses: vusion/wexler@v1.0.3
+        uses: vusion/wexler@v1.0.4
 
       - name: Release to lcap-assets
         run: node ./jimmy/app/pipelines/release-vant.js
