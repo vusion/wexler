@@ -26,7 +26,8 @@ runs:
     - run:  |
         if [[ -f lcap-assets/package.json ]]; then
           cd lcap-assets
-          git fetch origin
+          git fetch -p
+          git fetch --depth 1 origin
           git reset --hard origin/master
           git checkout master
           git reset --hard origin/master
