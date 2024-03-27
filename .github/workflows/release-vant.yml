@@ -30,7 +30,7 @@ jobs:
         uses: vusion/wexler@v1.0.8
 
       - name: Release to lcap-assets
-        run: node ./jimmy/app/pipelines/release-vant.js
+        run: node ./jimmy/app/pipelines/github/release-vant.js
 
       - name: Alert from Github
         if: ${{ failure() }}

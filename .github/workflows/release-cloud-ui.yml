@@ -30,7 +30,7 @@ jobs:
         uses: vusion/wexler@v1.0.8
 
       - name: Release to lcap-assets
-        run: node ./jimmy/app/pipelines/release-cloud-ui.js
+        run: node ./jimmy/app/pipelines/github/release-cloud-ui.js
 
       - name: Alert from Github
         if: ${{ failure() }}
