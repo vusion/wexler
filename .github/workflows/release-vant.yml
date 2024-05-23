@@ -20,6 +20,10 @@ jobs:
           cat ./package.json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
+      - name: Clean folder temp
+        run: |
+          rm -rf temp
+
       - name: Download artifact with version
         uses: actions/download-artifact@v4
         with:
