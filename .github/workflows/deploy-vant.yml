@@ -1,0 +1,25 @@
+name: release
+on: [push, workflow_call]
+jobs:
+  release-lcap-template:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout from cloud-ui
+        uses: actions/checkout@v4
+        with:
+          clean: false
+
+      - name: Setup Node 20.10.0
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+
+      - name: Clone from gitlab
+        uses: vusion/wexler@v1.0.8
+
+      - name: Deploy to bucket
+        run: node ./jimmy/app/pipelines/github/deploy-vant.js
+
+      - name: Alert from Github
+        if: ${{ failure() }}
+        run: node ./jimmy/app/pipelines/github/alert-github.js
