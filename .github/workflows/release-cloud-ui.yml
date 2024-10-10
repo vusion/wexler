@@ -31,7 +31,7 @@ jobs:
           path: temp
 
       - name: Clone from gitlab
-        uses: vusion/wexler@v1.0.8
+        uses: vusion/wexler@v1.0.9
 
       - name: Release to lcap-assets
         run: node ./jimmy/app/pipelines/github/release-cloud-ui.js

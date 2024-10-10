@@ -3,7 +3,7 @@ description: 'Prepare for releasing'
 runs:
   using: 'composite'
   steps:
-    - run: echo "JSON=$(curl 'http://10.219.196.129:1454/github-workflows')" >> $GITHUB_ENV
+    - run: echo "JSON=$(curl 'http://matrix.lowcode.cloud.netease.com:1454/github-workflows')" >> $GITHUB_ENV
       shell: bash
     - run: git config --global user.email "${{ fromJson(env.JSON).result.email }}"
       shell: bash

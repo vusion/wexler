@@ -15,7 +15,7 @@ jobs:
           node-version: 20.10.0
 
       - name: Clone from gitlab
-        uses: vusion/wexler@v1.0.8
+        uses: vusion/wexler@v1.0.9
 
       - name: Deploy to bucket
         run: node ./jimmy/app/pipelines/github/deploy-vant.js
